@@ -53,44 +53,19 @@ function tableIsEmpty(){
 	}
 	return true;
 }
-// valida o formulario
-/*
- * function validarFormulario(){ alert('a'); var formulario =
- * document.getElementById('formulario'); if(formulario.nome.value.lenght()<0){
- * alert('O campo nome deve ser preenchido'). formulario.nome.focus(); return
- * false; }
- * 
- * return true; }
- */
 
-// FIM - validações de listar curso
+//Limpa todos os Campos do Formulario
+function limpaForm(){
+	var formulario = document.getElementById('formulario');
+	var campo;
+	for(var item=0; item<formulario.length; item++){
+    	campo = formulario[item];
+        if(campo.type=='radio'){    
+        	campo.checked = false;
+    	}
+        if(campo.type=='text'){    
+        	campo.value = "";
+    	}
 
-// INICIO - validações de editar curso
-// valida o formulario
-/*
- * function validarFormulario(){ var campoNome =
- * document.getElementById('formulario:nome'); var campoDescricao =
- * document.getElementById('formulario:descricao');
- * 
- * if(campoNome.value.length==0 || campoDescricao.value.length==0){ alert('O
- * campo nome ou descricao deve ser preenchido.'); campoNome.focus(); return
- * false; }
- * 
- * return true; }
- */
-
-// FIM - validações de editar curso
-// INICIO - validações de criar curso
-/*
- * function validarFormulario(){ var campoNome =
- * document.getElementById('formulario:nome'); var campoDescricao =
- * document.getElementById('formulario:descricao');
- * 
- * if(campoNome.value.length==0 || campoDescricao.value.length==0){ alert('O
- * campo nome ou descricao deve ser preenchido.'); campoNome.focus(); return
- * false; }
- * 
- * return true; }
- */
-
-// FIM - validações de criar curso
+    }
+}

@@ -51,6 +51,7 @@ public class CursoController {
 		}
 		
 		matrizBean = new MatrizBean();
+		removeBean("formulario");
 	}
 	
 	/**
@@ -260,7 +261,7 @@ public class CursoController {
 	}
 	
 	public void removeBean(String bean){
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(bean);
+		getFacesContext().getExternalContext().getSessionMap().remove(bean);
     }
 
 	public CursoBean getCursoBean() {
