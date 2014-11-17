@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<sec:isAnonymous>
+		<!-- Redireciona caso o Usuário Não Esteja Autenticado. -->
+		<meta http-equiv="refresh" content="0;url=#{request.contextPath}/publico/login.xhtml" />
+	</sec:isAnonymous>
+
+	<ui:composition template="/template/index.xhtml">
+		<!-- HEAD DA PAGINA -->
+		<ui:define name="head">
+			<ui:include src="../../../template/css.xhtml"></ui:include>
+			<script language="javascript" src="#{request.contextPath}/publico/js/validacoesCurso.js" charset="ISO-8859-1" />
+			<!-- TITULO -->
+			<ui:define name="title">MyGridPuc - Curso</ui:define>
+		</ui:define>
+
+		<!-- CABEÇALHO -->
+		<ui:define name="cabecalho">
+			<ui:include src="../../../template/cabecalho.xhtml" />
+		</ui:define>
+
+		<!-- MENU -->
+		<ui:define name="menu">
+			<!-- Se o Usuario Estiver Logado ele Terá Acesso aos Menus -->
+			<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+				<ui:include src="../../../template/menu.xhtml" />
+			</sec:ifAnyGranted>
+		</ui:define>
+
+		<!-- CONTEÚDO -->
+		<ui:define name="conteudo">
+			<!-- Formulario de cadastro de  curso -->
+			<f:view>			
+				<div class="mws-panel grid_4">
+					<div class="mws-panel-header">
+						<span><i class="icon-archive"></i>Cadastro de Curso</span>
+					</div>
+					<div class="mws-panel-header">
+						<div class="mws-panel-body no-padding">
+							<h:form id="formulario" class="mws-form">
+								<!-- Codigo -->
+								<div class="mws-form-row">
+									<h:outputLabel value="Codigo" class="mws-form-label" required="true" />
+						            <div class="mws-form-item">
+						           		 <h:inputText id="codigoCurso" styleClass="form-control" size="20" maxlength="4" value="#{cursoController.cursoBean.codigoCurso}" onkeypress="return onlyNumber(event);"/>
+						            </div>
+						        </div>
+
+						        <!-- Nome -->
+								<div class="mws-form-row">
+									<h:outputLabel value="Nome" class="mws-form-label" required="true"/>
+						            <div class="mws-form-item">
+						           		<h:inputText id="nome" styleClass="form-control" maxlength="100" value="#{cursoController.cursoBean.nomeCurso}" />
+						            </div>
+						        </div>
+
+						       	<!-- Tabela de ano semestre -->
+						       	<div class="mws-form-row">
+									<h:outputLabel value="Ano/Semestre" class="col-sm-2 control-label"/> 
+									<div class="col-sm-10">
+										<h:inputText id="anodig" value="#{cursoController.matrizBean.anoSemestreMatriz}" size="6" maxlength="6" />
+										
+										<h:commandButton value="Adicionar" action="#{cursoController.addAnoSemestre}" class="btn btn-danger" onclick="return fieldEmpty();"/>
+						            </div>
+						            
+						            <h:dataTable border="1" id="matriz" style="margin: 0px auto;" value="#{cursoController.cursoBean.listMatriz}" var="matrizes">
+										<h:column>
+											<f:facet name="header">
+											<h:outputLabel value="Ano / Semestre" />
+											</f:facet>
+											<h:inputHidden value="#{matrizes.id}" id="idAnoSemestre" />
+											<h:outputLabel value="#{matrizes.anoSemestreMatriz}"/>
+										</h:column>
+								
+										<h:column>
+											<f:facet name="header">
+												<h:outputLabel value="Operação" />
+											</f:facet>
+											<h:commandButton styleClass="button" value="Remover" action="#{cursoController.rmvAnoSemestre}"/>
+										</h:column>
+									</h:dataTable>									
+						        </div>									
+
+								<!-- Submit -->
+								<div class="mws-button-row">
+									<h:commandButton value="Salvar" action="#{cursoController.incluir}" class="btn btn-danger" onclick="return camposObrigatorios();"/>
+									<h:commandButton value="Novo" class="btn" >
+										<p:ajax listener="#{cursoController.cleanAllForm}" update="formulario" />
+									</h:commandButton>
+									<h:commandButton value="Listar Cursos" action="#{cursoController.listar}" immediate="true" class="btn" />
+								</div>
+								<div class="mws-button-row">
+									<h:commandButton value="Voltar Tela Principal" action="principal" immediate="true" class="btn" /> 
+								</div>
+								<div class="mws-form-message" align="left">
+									<h:messages></h:messages>
+								</div>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</f:view>
+			<!-- RODAPÉ -->
+			<ui:define name="rodape" />
+		</ui:define>
+	</ui:composition>
+</html>

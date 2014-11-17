@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.com.mygridpuc.web.entidade;
 
 import java.io.Serializable;
@@ -33,13 +30,13 @@ public class Curso implements Serializable{
 	@Column(name="idcurso")
 	private Integer idCurso;
 	
-	@Column(name="codigocurso", unique=true)
-	private Integer codigoCurso;
+	@Column(name="codigocurso", length=4)
+	private String codigoCurso;
 	
 	@Column(name="nomecurso")
 	private String nomeCurso;
 	
-	@OneToMany(mappedBy="curso", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "curso", targetEntity = Matriz.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Matriz> listMatriz;
 	
 	public List<Matriz> getListMatriz() {
@@ -55,63 +52,16 @@ public class Curso implements Serializable{
 	public void setIdCurso(Integer idCurso) {
 		this.idCurso = idCurso;
 	}
-	public Integer getCodigoCurso() {
-		return codigoCurso;
-	}
-	public void setCodigoCurso(Integer codigoCurso) {
-		this.codigoCurso = codigoCurso;
-	}
 	public String getNomeCurso() {
 		return nomeCurso;
 	}
 	public void setNomeCurso(String nomeCurso) {
 		this.nomeCurso = nomeCurso;
 	}
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((codigoCurso == null) ? 0 : codigoCurso.hashCode());
-		result = prime * result + ((idCurso == null) ? 0 : idCurso.hashCode());
-		result = prime * result
-				+ ((listMatriz == null) ? 0 : listMatriz.hashCode());
-		result = prime * result
-				+ ((nomeCurso == null) ? 0 : nomeCurso.hashCode());
-		return result;
+	public String getCodigoCurso() {
+		return codigoCurso;
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Curso other = (Curso) obj;
-		if (codigoCurso == null) {
-			if (other.codigoCurso != null)
-				return false;
-		} else if (!codigoCurso.equals(other.codigoCurso))
-			return false;
-		if (idCurso == null) {
-			if (other.idCurso != null)
-				return false;
-		} else if (!idCurso.equals(other.idCurso))
-			return false;
-		if (listMatriz == null) {
-			if (other.listMatriz != null)
-				return false;
-		} else if (!listMatriz.equals(other.listMatriz))
-			return false;
-		if (nomeCurso == null) {
-			if (other.nomeCurso != null)
-				return false;
-		} else if (!nomeCurso.equals(other.nomeCurso))
-			return false;
-		return true;
+	public void setCodigoCurso(String codigoCurso) {
+		this.codigoCurso = codigoCurso;
 	}
-
-	
 }

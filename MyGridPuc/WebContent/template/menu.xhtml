@@ -14,8 +14,7 @@
 		    <li>
 		        <a href="#"><i class="icon-graph"></i>Curso</a>
 		        <ul class="closed">
-		            <li><a href="#{request.contextPath}/logado/admin/vwCriarCurso.xhtml">Cadastar Curso</a></li>
-		            <li><a href="#{request.contextPath}/logado/admin/vwListarCurso.xhtml">Listar Cursos</a></li>
+		            <li><h:commandLink value="Cadastar Curso" action="criar curso"/></li>
 		            <li><h:commandLink value="Listar Curso" action="#{cursoController.listar}"/></li>
 		        </ul>
 		    </li>
@@ -30,8 +29,10 @@
 		    <li>
 		        <a href="#"><i class="icon-table"></i>Matriz Curricular</a>
 		        <ul class="closed">
-		        	<li><h:commandLink value="Visualizar Matrizes" action="vwMatriz"/></li>
-		            <li><a href="#{request.contextPath}/logado/admin/vwImportarMatriz.xhtml">Importar Matriz</a></li>
+		        	<li><h:commandLink value="Teste DropDownPrime" action="teste"/></li>
+		            <li><h:commandLink value="Listar Disciplina" action="#{disciplinaController.listar}"/></li>
+		        	<li><a href="#{request.contextPath}/logado/admin/vwCriarDisciplina.xhtml">Cadastar Matriz</a></li>
+		            <li><a href="#{request.contextPath}/logado/admin/vwCriarDisciplina.xhtml">Listar Matriz</a></li>
 		        </ul>
 		    </li>
 		    <li>

@@ -25,23 +25,19 @@
 		<!-- Navegação de telas para o cadastro de Cursos  -->
 		 <navigation-case>
 			  <from-outcome>vwCurso</from-outcome>
-			  <to-view-id>/logado/admin/vwCurso.xhtml</to-view-id>
+			  <to-view-id>/logado/admin/curso/vwCurso.xhtml</to-view-id>
 		 </navigation-case>		
 		 <navigation-case>
-			  <from-outcome>vwCurso</from-outcome>
-			  <to-view-id>/logado/admin/vwCurso.xhtml</to-view-id>
-		 </navigation-case>
-		 <navigation-case>
 			  <from-outcome>listar curso</from-outcome>
-			  <to-view-id>/logado/admin/vwListarCurso.xhtml</to-view-id>
+			  <to-view-id>/logado/admin/curso/vwListar.xhtml</to-view-id>
 		 </navigation-case>
 		 <navigation-case>
 			  <from-outcome>editar curso</from-outcome>
-			  <to-view-id>/logado/admin/vwEditarCurso.xhtml</to-view-id>
+			  <to-view-id>/logado/admin/curso/vwEditar.xhtml</to-view-id>
 		 </navigation-case>
 		 <navigation-case>
 			  <from-outcome>criar curso</from-outcome>
-			  <to-view-id>/logado/admin/vwCriarCurso.xhtml</to-view-id>
+			  <to-view-id>/logado/admin/curso/vwCriar.xhtml</to-view-id>
 		 </navigation-case>
 		 
 		<!-- Navegação de telas para o cadastro de disciplinas  -->

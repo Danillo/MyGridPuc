@@ -11,23 +11,23 @@
    <PROCESS-ITEM-OUTPUT ID="falha::#logado#admin#falha.xhtml"
     NAME="output2" PATH="/logado/admin/falha.xhtml"
     TARGET="rules:#logado#admin#falha.xhtml" TITLE="falha" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="vwCurso::#logado#admin#vwCurso.xhtml"
-    NAME="output3" PATH="/logado/admin/vwCurso.xhtml"
-    TARGET="rules:#logado#admin#vwCurso.xhtml" TITLE="vwCurso" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="vwCurso::#logado#admin#curso#vwCurso.xhtml"
+    NAME="output3" PATH="/logado/admin/curso/vwCurso.xhtml"
+    TARGET="rules:#logado#admin#curso#vwCurso.xhtml" TITLE="vwCurso" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="listar curso::#logado#admin#vwListarCurso.xhtml" NAME="output4"
-    PATH="/logado/admin/vwListarCurso.xhtml"
-    TARGET="rules:#logado#admin#vwListarCurso.xhtml"
+    ID="listar curso::#logado#admin#curso#vwListar.xhtml" NAME="output4"
+    PATH="/logado/admin/curso/vwListar.xhtml"
+    TARGET="rules:#logado#admin#curso#vwListar.xhtml"
     TITLE="listar curso" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="editar curso::#logado#admin#vwEditarCurso.xhtml" NAME="output5"
-    PATH="/logado/admin/vwEditarCurso.xhtml"
-    TARGET="rules:#logado#admin#vwEditarCurso.xhtml"
+    ID="editar curso::#logado#admin#curso#vwEditar.xhtml" NAME="output5"
+    PATH="/logado/admin/curso/vwEditar.xhtml"
+    TARGET="rules:#logado#admin#curso#vwEditar.xhtml"
     TITLE="editar curso" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="criar curso::#logado#admin#vwCriarCurso.xhtml" NAME="output6"
-    PATH="/logado/admin/vwCriarCurso.xhtml"
-    TARGET="rules:#logado#admin#vwCriarCurso.xhtml" TITLE="criar curso" model-entity="JSFProcessItemOutput"/>
+    ID="criar curso::#logado#admin#curso#vwCriar.xhtml" NAME="output6"
+    PATH="/logado/admin/curso/vwCriar.xhtml"
+    TARGET="rules:#logado#admin#curso#vwCriar.xhtml" TITLE="criar curso" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
     ID="vwDisciplina::#logado#admin#vwDisciplina.xhtml" NAME="output7"
     PATH="/logado/admin/vwDisciplina.xhtml"
@@ -82,14 +82,28 @@
     ID="criar local::#logado#admin#vwCriarLocal.xhtml" NAME="output18"
     PATH="/logado/admin/vwCriarLocal.xhtml"
     TARGET="rules:#logado#admin#vwCriarLocal.xhtml" TITLE="criar local" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="vwUsuario::#logado#admin#vwUsuario.xhtml"
+    NAME="output19" PATH="/logado/admin/vwUsuario.xhtml"
+    TARGET="rules:#logado#admin#vwUsuario.xhtml" TITLE="vwUsuario" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listar usuario::#logado#admin#vwListarUsuario.xhtml"
+    NAME="output20" PATH="/logado/admin/vwListarUsuario.xhtml"
+    TARGET="rules:#logado#admin#vwListarUsuario.xhtml"
+    TITLE="listar usuario" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="editar usuario::#logado#admin#vwEditarUsuario.xhtml"
+    NAME="output21" PATH="/logado/admin/vwEditarUsuario.xhtml"
+    TARGET="rules:#logado#admin#vwEditarUsuario.xhtml"
+    TITLE="editar usuario" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="criar usuario::#logado#admin#vwCriarUsuario.xhtml"
+    NAME="output22" PATH="/logado/admin/vwCriarUsuario.xhtml"
+    TARGET="rules:#logado#admin#vwCriarUsuario.xhtml"
+    TITLE="criar usuario" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#logado#admin#vwCurso.xhtml"
-  PATH="/logado/admin/vwCurso.xhtml" SHAPE="304,689,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#logado#vwPrincipal.xhtml"
   PATH="/logado/vwPrincipal.xhtml" SHAPE="304,33,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#logado#admin#vwEditarCurso.xhtml"
-  PATH="/logado/admin/vwEditarCurso.xhtml" SHAPE="304,913,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#logado#admin#vwEditarDisciplina.xhtml"
   PATH="/logado/admin/vwEditarDisciplina.xhtml" SHAPE="304,1361,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#logado#admin#vwListarDisciplina.xhtml"
@@ -100,10 +114,6 @@
   PATH="/logado/admin/sucesso.xhtml" SHAPE="304,465,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#logado#admin#vwCriarDisciplina.xhtml"
   PATH="/logado/admin/vwCriarDisciplina.xhtml" SHAPE="304,1473,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#logado#admin#vwListarCurso.xhtml"
-  PATH="/logado/admin/vwListarCurso.xhtml" SHAPE="304,801,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#logado#admin#vwCriarCurso.xhtml"
-  PATH="/logado/admin/vwCriarCurso.xhtml" SHAPE="304,1025,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#logado#admin#falha.xhtml"
   PATH="/logado/admin/falha.xhtml" SHAPE="304,577,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#logado#admin#vwMatriz.xhtml"
@@ -122,4 +132,20 @@
   PATH="/logado/admin/vwListarLocal.xhtml" SHAPE="304,833,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#logado#admin#vwLocal.xhtml"
   PATH="/logado/admin/vwLocal.xhtml" SHAPE="304,721,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#logado#admin#vwListarUsuario.xhtml"
+  PATH="/logado/admin/vwListarUsuario.xhtml" SHAPE="304,961,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#logado#admin#vwUsuario.xhtml"
+  PATH="/logado/admin/vwUsuario.xhtml" SHAPE="304,849,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#logado#admin#vwEditarUsuario.xhtml"
+  PATH="/logado/admin/vwEditarUsuario.xhtml" SHAPE="304,1073,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#logado#admin#vwCriarUsuario.xhtml"
+  PATH="/logado/admin/vwCriarUsuario.xhtml" SHAPE="304,2305,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#logado#admin#curso#vwCurso.xhtml"
+  PATH="/logado/admin/curso/vwCurso.xhtml" SHAPE="304,849,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#logado#admin#curso#vwListar.xhtml"
+  PATH="/logado/admin/curso/vwListar.xhtml" SHAPE="304,961,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#logado#admin#curso#vwCriar.xhtml"
+  PATH="/logado/admin/curso/vwCriar.xhtml" SHAPE="304,2305,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#logado#admin#curso#vwEditar.xhtml"
+  PATH="/logado/admin/curso/vwEditar.xhtml" SHAPE="304,1073,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
