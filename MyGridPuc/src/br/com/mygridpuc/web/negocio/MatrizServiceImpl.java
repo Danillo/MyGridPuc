@@ -117,5 +117,13 @@ public class MatrizServiceImpl implements MatrizService{
 	public Matriz consultarPorIdCursoAnoMatriz(Integer idCurso, String anoSemestre) throws MyGridPucException {
 		return getMatrizDAO().listar(idCurso,anoSemestre);
 	}
+	
+	@Override
+	public boolean existeMatriz(Integer idCurso, String anoSemestre) throws MyGridPucException {
+		if(getMatrizDAO().listar(idCurso,anoSemestre)==null){
+			return false;
+		} return true;
+	}
+	
 
 }

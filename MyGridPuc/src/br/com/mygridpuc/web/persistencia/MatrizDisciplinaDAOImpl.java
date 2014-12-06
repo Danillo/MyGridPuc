@@ -1,5 +1,6 @@
 package br.com.mygridpuc.web.persistencia;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+
+import com.mysql.fabric.xmlrpc.base.Array;
 
 import br.com.mygridpuc.web.entidade.MatrizDisciplina;
 import br.com.mygridpuc.web.util.MyGridPucException;
@@ -61,18 +64,29 @@ public class MatrizDisciplinaDAOImpl implements MatrizDisciplinaDAO<MatrizDiscip
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<MatrizDisciplina> listar() throws MyGridPucException {
-		// TODO Auto-generated method stub
-		return null;
+		List<MatrizDisciplina> lista = new ArrayList<MatrizDisciplina>();
+		
+		try {  
+			Query query = getEntityManager().createQuery("select matrizDisciplina from MatrizDisciplina as matrizDisciplina ");  
+			lista = query.getResultList();  
+		} catch (Exception e) {  
+			throw new MyGridPucException(e, "Problemas na localização dos objetos");  
+		}  
+		
+		return lista;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MatrizDisciplina> listarPorMatriz(Integer idMatriz) throws MyGridPucException {
-		List<MatrizDisciplina> lista = null;  
+		List<MatrizDisciplina> lista = new ArrayList<MatrizDisciplina>();
 		try {  
-			Query query = getEntityManager().createQuery("select matrizDisciplina from MatrizDisciplina as matrizDisciplina where matrizDisciplina.matriz.idMatriz ="+idMatriz+"");  
+			Query query = getEntityManager().createQuery("select matrizDisciplina from MatrizDisciplina as matrizDisciplina where matrizDisciplina.matriz.idMatriz =:idMatriz ");  
+			query.setParameter("idMatriz", idMatriz);
+			
 			lista = query.getResultList();  
 		} catch (Exception e) {  
 			throw new MyGridPucException(e, "Problemas na localização dos objetos");  
@@ -83,9 +97,11 @@ public class MatrizDisciplinaDAOImpl implements MatrizDisciplinaDAO<MatrizDiscip
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MatrizDisciplina> listarPorDisciplina(Integer idDisciplina) throws MyGridPucException{
-		List<MatrizDisciplina> lista = null;  
+		List<MatrizDisciplina> lista = new ArrayList<MatrizDisciplina>();
 		try {  
-			Query query = getEntityManager().createQuery("select matrizDisciplina from MatrizDisciplina as matrizDisciplina where matrizDisciplina.disciplina.idDisciplinaMatriz ="+idDisciplina+"");  
+			Query query = getEntityManager().createQuery("select matrizDisciplina from MatrizDisciplina as matrizDisciplina where matrizDisciplina.disciplina.idDisciplina =:idDisciplina ");  
+			query.setParameter("idDisciplina", idDisciplina);
+			
 			lista = query.getResultList();  
 		} catch (Exception e) {  
 			throw new MyGridPucException(e, "Problemas na localização dos objetos");  
@@ -97,6 +113,42 @@ public class MatrizDisciplinaDAOImpl implements MatrizDisciplinaDAO<MatrizDiscip
 		return entityManager;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MatrizDisciplina> listarPorMatrizPeriodo(Integer idMatriz, Integer periodo) throws MyGridPucException {
+		List<MatrizDisciplina> lista = new ArrayList<MatrizDisciplina>();
+		try {  
+			Query query = getEntityManager().createQuery("select matrizDisciplina from MatrizDisciplina as matrizDisciplina where matrizDisciplina.matriz.idMatriz  =:idMatriz and matrizDisciplina.periodo =:periodo ");  
+			query.setParameter("idMatriz", idMatriz);
+			query.setParameter("periodo", periodo);
+			
+			lista = query.getResultList();  
+		} catch (Exception e) {  
+			throw new MyGridPucException(e, "Problemas na localização dos objetos");  
+		}  
+		if(lista.size()>0){
+			return lista;	
+		}return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MatrizDisciplina> listarPorIdMatrizIdDisciplina(Integer idMatriz, Integer idDisciplina) throws MyGridPucException {
+		List<MatrizDisciplina> lista = new ArrayList<MatrizDisciplina>();
+		try {  
+			Query query = getEntityManager().createQuery("select matrizDisciplina from MatrizDisciplina as matrizDisciplina where matrizDisciplina.matriz.idMatriz =:idMatriz and matrizDisciplina.disciplina.idDisciplina =:idDisciplina ");  
+			query.setParameter("idMatriz", idMatriz);
+			query.setParameter("idDisciplina", idDisciplina);
+			
+			lista = query.getResultList();  
+		} catch (Exception e) {  
+			throw new MyGridPucException(e, "Problemas na localização dos objetos");  
+		}  
+		if(lista.size()>0){
+			return lista;	
+		}return null;
+	}
+	
 	@PersistenceContext
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;

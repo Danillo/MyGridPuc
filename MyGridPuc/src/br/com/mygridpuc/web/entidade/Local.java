@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * Classe que representa os dados persistentes do curso
  * 
@@ -31,21 +33,33 @@ public class Local implements Serializable{
 	 */
 	private static final long serialVersionUID = -1260661504104352006L;
 
+	@Expose
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idlocal")
 	private Integer idLocal;
 
+	@Expose
 	@Column(name="area")
 	private Integer area;
+	
+	@Expose
 	@Column(name="bloco")
 	private String bloco;
+	
+	@Expose
 	@Column(name="sala")
 	private Integer sala;
+	
+	@Expose
 	@Column(name="dia_semana")
 	private Integer dia_semana;
+	
+	@Expose
 	@Column(name="hora_ini")
 	private String hora_ini;
+	
+	@Expose
 	@Column(name="hora_fim")
 	private String hora_fim;
 	
@@ -169,6 +183,13 @@ public class Local implements Serializable{
 		} else if (!turma.equals(other.turma))
 			return false;
 		return true;
+	}
+	@Override
+	public String toString() {
+		return "Local [idLocal=" + idLocal + ", area=" + area + ", bloco="
+				+ bloco + ", sala=" + sala + ", dia_semana=" + dia_semana
+				+ ", hora_ini=" + hora_ini + ", hora_fim=" + hora_fim
+				+ ", turma=" + turma + "]";
 	}
 		
 }

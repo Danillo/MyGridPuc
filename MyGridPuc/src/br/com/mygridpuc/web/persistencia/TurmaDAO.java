@@ -12,9 +12,9 @@ import br.com.mygridpuc.web.util.MyGridPucException;
  *
  */
 public interface TurmaDAO extends GenericoDAO<Turma, Integer>{
-	
+
 	public List<Turma> consultarPorIdDisciplina(Integer idDisciplina) throws MyGridPucException;
 
-	public Turma consultarPorIdDisciplina(Integer idDisciplina, String codTurma) throws MyGridPucException;
+	public Turma consultarPorIdDisciplinaCodTurma(Integer idDisciplina, String codTurma) throws MyGridPucException;
 
 }

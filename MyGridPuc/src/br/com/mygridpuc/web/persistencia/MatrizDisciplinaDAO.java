@@ -2,6 +2,7 @@ package br.com.mygridpuc.web.persistencia;
 
 import java.util.List;
 
+import br.com.mygridpuc.web.entidade.MatrizDisciplina;
 import br.com.mygridpuc.web.util.MyGridPucException;
 
 /**
@@ -68,5 +69,21 @@ public interface MatrizDisciplinaDAO <MatrizDisciplina>{
 	 * @throws MyGridPucException
 	 */
 	public List<MatrizDisciplina> listarPorDisciplina(Integer idDisciplina) throws MyGridPucException;
+	
+	/**
+	 * Lista os objetos MatrizDisciplina da base de dados pelo Id da Matriz
+	 * @return
+	 * @throws MyGridPucException
+	 */
+	public List<MatrizDisciplina> listarPorMatrizPeriodo(Integer idMatriz,Integer periodo) throws MyGridPucException;
+
+	/**
+	 * Lista os objetos  MatrizDisciplina da base de dados pelo Id da Matriz e pelo Id da Disciplina
+	 * @param idMatriz
+	 * @param idDisciplina
+	 * @return
+	 * @throws MyGridPucException
+	 */
+	public List<MatrizDisciplina> listarPorIdMatrizIdDisciplina(Integer idMatriz,	Integer idDisciplina) throws MyGridPucException;
 
 }

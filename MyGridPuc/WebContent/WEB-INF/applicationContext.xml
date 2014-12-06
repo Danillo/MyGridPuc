@@ -16,7 +16,7 @@
 	<!-- Indica ao Spring Framework para funcionar com anotacoes -->
     <context:annotation-config/> 
     <!-- Indica o pacote que sera rastreado pelas anotacoes -->
-    <context:component-scan base-package="br.com.mygridpuc.web"/>
+    <context:component-scan base-package="br.com.mygridpuc.*"/>
     
 	<!-- Indica a classe responsável pela gestão das entidades persistentes  -->
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -29,5 +29,8 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
+	<!-- Indica as classes responsáveis pela gestão das transações WEBSERVICE  -->
+	<bean id="transactionCurso" class="br.com.mygridpuc.web.ws.transaction.TransactionCursoImpl" />
+	<bean id="transactionDisciplina" class="br.com.mygridpuc.web.ws.transaction.TransactionDisciplinaImpl" />
 	
 </beans>

@@ -74,4 +74,14 @@ public interface MatrizService {
 	 * @throws MyGridPucException
 	 */
 	public Matriz consultarPorIdCursoAnoMatriz(Integer idCurso, String anoSemestre)throws MyGridPucException;
+
+	/**
+	 * Consulta se Exites uma matriz pelo identificador de Curso e Pelo AnoSemestre
+	 * @param idCurso
+	 * @param anoSemestre
+	 * @return boolean
+	 * @throws MyGridPucException
+	 */
+	public boolean existeMatriz(Integer idCurso, String anoSemestre)
+			throws MyGridPucException;
 }

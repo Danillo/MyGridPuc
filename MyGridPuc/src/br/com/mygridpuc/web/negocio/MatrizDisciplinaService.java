@@ -64,4 +64,22 @@ public interface MatrizDisciplinaService {
 	 * @throws MyGridPucException
 	 */
 	public List<MatrizDisciplina> listarPorDisciplina(Integer idDisciplina) throws MyGridPucException;
+
+	/**
+	 * Lista todas as matrizDisciplina cadastradas que pertencem a uma disciplina e um Periodo Específico
+	 * @return
+	 * @throws MyGridPucException
+	 */
+	public List<MatrizDisciplina> listarPorMatrizPeriodo(Integer idMatriz,	Integer periodo) throws MyGridPucException;
+	
+	/**
+	 * Pesquisa para Determinar se Existe no Banco a Correlação da Disciplina com a Matriz.
+	 * @param idMatriz
+	 * @param idDisciplina
+	 * @return Boolean se Existe ou não a correlação.
+	 * @throws MyGridPucException
+	 */
+	public boolean existeMatrizDisciplina(Integer idMatriz, Integer idDisciplina) throws MyGridPucException;
+	
+	
 }

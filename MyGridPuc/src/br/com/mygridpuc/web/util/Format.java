@@ -24,6 +24,8 @@ public abstract class Format {
 			return 5;
 		case "SEX":	
 			return 6;
+		case "SÁB":	
+			return 7;
 		case "SAB":	
 			return 7;
 		default:

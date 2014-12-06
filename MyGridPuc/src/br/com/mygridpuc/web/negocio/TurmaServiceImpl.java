@@ -67,7 +67,7 @@ public class TurmaServiceImpl implements TurmaService{
 	@Transactional(readOnly=false, propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
 	public void excluir(Integer id) throws MyGridPucException {
 		getTurmaDAO().excluir(id);
-		
+
 	}
 
 	/**
@@ -79,11 +79,13 @@ public class TurmaServiceImpl implements TurmaService{
 	@Transactional(readOnly=true, propagation = Propagation.SUPPORTS)
 	public Turma consultar(Integer id) throws MyGridPucException {
 		Turma turma = getTurmaDAO().consultar(id);
-		Hibernate.initialize(turma.getListLocais());
+		if(turma!=null){
+			Hibernate.initialize(turma.getListLocais());
+		}
 		return turma;
 	}
 
-	
+
 	/**
 	 * Consulta a Turma pelo Id da Disciplina
 	 * @param Turma
@@ -91,13 +93,32 @@ public class TurmaServiceImpl implements TurmaService{
 	 * @throws MyGridPucException
 	 */
 	@Transactional(readOnly=true, propagation = Propagation.SUPPORTS)
-	public Turma consultarPorIdDisciplinaETurma(Integer idDisciplina, String codTurma) throws MyGridPucException {
-		Turma turma = getTurmaDAO().consultarPorIdDisciplina(idDisciplina, codTurma);
-		Hibernate.initialize(turma.getListLocais());
+	public Turma consultarPorIdDisciplinaECodTurma(Integer idDisciplina, String codTurma) throws MyGridPucException {
+		Turma turma = getTurmaDAO().consultarPorIdDisciplinaCodTurma(idDisciplina, codTurma);
+		if(turma!=null){
+			Hibernate.initialize(turma.getListLocais());
+		}
+		
 		return turma;
 	}
 
-	
+	/**
+	 * Consulta a Turma pelo Id da Disciplina
+	 * @param Turma
+	 * @return
+	 * @throws MyGridPucException
+	 */
+	@Transactional(readOnly=true, propagation = Propagation.SUPPORTS)
+	public List<Turma> consultarPorIdDisciplina(Integer idDisciplina) throws MyGridPucException {
+		List<Turma> turmas = getTurmaDAO().consultarPorIdDisciplina(idDisciplina);
+		if(turmas.size()>0){
+			for(Turma t: turmas){
+				Hibernate.initialize(t.getListLocais());
+			}
+		}
+		return turmas;
+	}
+
 	/**
 	 * Lista um turma
 	 * @param turma
@@ -106,7 +127,26 @@ public class TurmaServiceImpl implements TurmaService{
 	 */
 	@Transactional(readOnly=true, propagation = Propagation.SUPPORTS)
 	public List<Turma> listar() throws MyGridPucException {
-		return getTurmaDAO().listar();
+		List<Turma> listaTurmas = getTurmaDAO().listar();
+		if(listaTurmas.size()>0){
+			for(Turma t: listaTurmas){
+				Hibernate.initialize(t.getListLocais());
+			}
+		}
+		return listaTurmas;
 	}
-	
+
+	/**
+	 * Consulta a Turma pelo Id da Disciplina e Código da Turma
+	 * @param Turma
+	 * @return boolean
+	 * @throws MyGridPucException
+	 */
+	@Transactional(readOnly=true, propagation = Propagation.SUPPORTS)
+	public boolean existeTurmaNaDisciplina(Integer idDisciplina, String codTurma) throws MyGridPucException {
+		if(getTurmaDAO().consultarPorIdDisciplina(idDisciplina)==null){
+			return false;
+		}return true;
+	}
+
 }

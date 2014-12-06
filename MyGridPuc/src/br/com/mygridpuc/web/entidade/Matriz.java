@@ -15,6 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Classe que representa os dados persistentes da matriz
  * 
@@ -27,12 +30,15 @@ import javax.persistence.Table;
 public class Matriz implements Serializable{
 
 	private static final long serialVersionUID = 4314447931031362446L;
-
+	@Expose
+	//@SerializedName("im")//Serializar o idMatriz como im
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idMatriz")
 	private Integer idMatriz;
 	
+	@Expose
+	//@SerializedName("as")//Serializar o anoSemestreMatriz como as
 	@Column(name="anoSemestreMatriz", nullable=false)
 	private String anoSemestreMatriz;
 

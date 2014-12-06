@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Representa o Objeto de negocio 'Disciplina'.
  * 
@@ -20,23 +23,32 @@ public class Disciplina implements Serializable{
 	 */
 	private static final long serialVersionUID = -4730697536306531341L;
 
+	@Expose
+	//@SerializedName("id")//Serializar o idDisciplina como id
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idDisciplina")
 	private Integer idDisciplina;
 	
+	@Expose
+	//@SerializedName("cd")//Serializar o codigo Disciplina como cd
 	@Column(name="codigo", unique=true)
 	private String codigo;
 	
+	@Expose
+	//@SerializedName("cr")//Serializar o créditos Disciplina como cr
 	@Column(name="creditoDisciplina")
 	private Integer credito;
 	
+	@Expose
+	//@SerializedName("nd")//Serializar o nome Disciplina como nd
 	@Column(name="nomeDiciplina")
 	private String nome;
 	
 	@OneToMany(mappedBy="disciplina", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<MatrizDisciplina> listMAtrizDisciplina;
 	
+	@Expose
 	@OneToMany(mappedBy="disciplina", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Turma> listTurma;
 
@@ -78,6 +90,14 @@ public class Disciplina implements Serializable{
 
 	public void setListMAtrizDisciplina(List<MatrizDisciplina> listMAtrizDisciplina) {
 		this.listMAtrizDisciplina = listMAtrizDisciplina;
+	}
+
+	public List<Turma> getListTurma() {
+		return listTurma;
+	}
+
+	public void setListTurma(List<Turma> listTurma) {
+		this.listTurma = listTurma;
 	}
 
 	@Override

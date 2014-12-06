@@ -18,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * Classe que representa os dados persistentes
  * 
@@ -33,11 +35,13 @@ public class Turma implements Serializable{
 	 */
 	private static final long serialVersionUID = -2165804340976244103L;
 
+	@Expose
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idTurma")
 	private Integer idTurma;
 	
+	@Expose
 	@Column(name="codTurma")
 	private String codTurma;
 	
@@ -45,6 +49,7 @@ public class Turma implements Serializable{
 	@JoinColumn(name="idDisciplina", nullable=false, insertable=true, updatable=true)
 	private Disciplina disciplina;
 	
+	@Expose
 	@OneToMany(mappedBy="turma", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Local> listLocais;
 

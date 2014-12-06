@@ -38,7 +38,7 @@ public class TurmaDAOImpl extends GenericoDAOImpl<Turma, Integer> implements Tur
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Turma consultarPorIdDisciplina(Integer idDisciplina, String codTurma) throws MyGridPucException {
+	public Turma consultarPorIdDisciplinaCodTurma(Integer idDisciplina, String codTurma) throws MyGridPucException {
 		List<Turma> turmas=null;
 		try { 
 			Query query = getEntityManager().createQuery("select turma from Turma as turma where turma.disciplina.idDisciplina =:idDisciplina and turma.codTurma =:codTurma");
