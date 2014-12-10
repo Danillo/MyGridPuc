@@ -71,7 +71,7 @@
 										<h:commandButton value="Adicionar" action="#{cursoController.addAnoSemestre}" class="btn btn-danger" onclick="return fieldEmpty();"/>
 						            </div>
 						            
-						            <h:dataTable border="1" id="matriz" style="margin: 0px auto;" value="#{cursoController.cursoBean.listMatriz}" var="matrizes">
+						            <h:dataTable rendered="#{!empty cursoController.cursoBean.listMatriz}" border="0" id="matriz" class="mws-table" style="margin: 0px auto;" value="#{cursoController.cursoBean.listMatriz}" var="matrizes">
 										<h:column>
 											<f:facet name="header">
 											<h:outputLabel value="Ano / Semestre" />

@@ -22,8 +22,12 @@ public class DisciplinaServiceWS {
 	@Path("{idMatriz}")
 	@Produces("application/json; charset=UTF-8")
 	public Response getDisciplinas(@PathParam("idMatriz")int idMatriz){
-		
-		String result  = trsDisciplina.getByIdMatriz(idMatriz);
+		String result;
+		try {
+		result  = trsDisciplina.getByIdMatriz(idMatriz);
+		} catch (Exception e) {
+			result = "[]";
+		}
 		return Response.status(200).entity(result).build();
 	}
 	
@@ -31,8 +35,13 @@ public class DisciplinaServiceWS {
 	@Path("{idMatriz}/{periodo}")
 	@Produces("application/json; charset=UTF-8")
 	public Response getDisciplinas(@PathParam("idMatriz")int idMatriz, @PathParam("periodo")int periodo){
-		
-		String result  = trsDisciplina.getByIdMatrizPeriodo(idMatriz, periodo);
+		String result;
+		try {
+			result  = trsDisciplina.getByIdMatrizPeriodo(idMatriz, periodo);
+
+		} catch (Exception e) {
+			result = "[]";
+		}
 		return Response.status(200).entity(result).build();
 	}
 

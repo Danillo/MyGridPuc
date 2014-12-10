@@ -33,7 +33,7 @@ public class TransactionCursoImpl implements TransactionCurso {
 			listCursos = getCursoService().listar();
 
 		} catch (MyGridPucException e) {
-			e.printStackTrace();
+			return null;
 		}
 
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
@@ -51,8 +51,7 @@ public class TransactionCursoImpl implements TransactionCurso {
 		try {
 			curso = getCursoService().consultar(codCurso);
 		} catch (MyGridPucException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 

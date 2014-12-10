@@ -69,7 +69,7 @@ public class TransactionDisciplinaImpl implements TransactionDisciplina{
 		try {
 			listaMatrizDisciplina = getMatDiscService().listarPorMatriz(idMatriz);
 		} catch (MyGridPucException e) {
-			e.printStackTrace();
+			return "[]";
 		}
 
 		for(MatrizDisciplina matDisciplina : listaMatrizDisciplina){
@@ -81,15 +81,18 @@ public class TransactionDisciplinaImpl implements TransactionDisciplina{
 				}
 				listaDisciplinas.add(disciplina);
 			} catch (MyGridPucException e) {
-				e.printStackTrace();
+				return "[]";
 			}
 
 		}
 
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-
-		String strJson = gson.toJson(listaDisciplinas);
-		//System.out.println(strJson);
+		String strJson="";
+		if(!listaDisciplinas.isEmpty()){
+			strJson = gson.toJson(listaDisciplinas);
+		}else{
+			strJson = "[]";
+		}
 
 		return strJson;
 	}
@@ -104,7 +107,7 @@ public class TransactionDisciplinaImpl implements TransactionDisciplina{
 			listaMatrizDisciplina = getMatDiscService().listarPorMatrizPeriodo(idMatriz, periodo);
 
 		} catch (MyGridPucException e) {
-			e.printStackTrace();
+			return "[]";
 		}
 
 		for(MatrizDisciplina matDisciplina : listaMatrizDisciplina){
@@ -116,16 +119,19 @@ public class TransactionDisciplinaImpl implements TransactionDisciplina{
 				}
 				listaDisciplinas.add(disciplina);
 			} catch (MyGridPucException e) {
-				e.printStackTrace();
+				return "[]";
 			}
 
 		}
 
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-
-		String strJson = gson.toJson(listaDisciplinas);
-		//System.out.println(strJson);
-
+		String strJson="";
+		if(!listaDisciplinas.isEmpty()){
+			strJson = gson.toJson(listaDisciplinas);
+		}else{
+			strJson = "[]";
+		}
+		
 		return strJson;
 	}
 
